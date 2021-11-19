@@ -1,0 +1,24 @@
+package com.vorotof.advancereport.service.mapper.telegramuser;
+
+import com.vorotof.advancereport.domain.TelegramUser;
+import com.vorotof.advancereport.service.dto.telegramuser.TelegramUserDto;
+import com.vorotof.advancereport.service.mapper.Mapper;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TelegramUserToDto implements Mapper<TelegramUser, TelegramUserDto> {
+
+    @Override
+    public TelegramUserDto map(TelegramUser input) {
+        return new TelegramUserDto()
+                .setId(input.getId())
+                .setIsBot(input.getIsBot())
+                .setUserName(input.getUserName())
+                .setFirstName(input.getFirstName())
+                .setLastName(input.getLastName())
+                .setCanJoinGroups(input.getCanJoinGroups())
+                .setCanReadAllGroupMessages(input.getCanReadAllGroupMessages())
+                .setSupportInlineQueries(input.getSupportInlineQueries());
+    }
+
+}
