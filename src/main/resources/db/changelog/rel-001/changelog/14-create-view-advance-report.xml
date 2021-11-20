@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="14" author="croacker">
+        <createView replaceIfExists="true"
+                     viewName="ADVANCE_REPORT_VIEW">
+            SELECT
+            CASH_CHECK_LINE.ID AS ID,
+            CASH_CHECK.ID AS CHECK_ID,
+            CASH_CHECK.CHECK_DATE AS CHECK_DATE,
+            CASH_CHECK.TELEGRAM_USER_ID AS TELEGRAM_USER_ID,
+            CASH_CHECK.TOTAL_SUM AS CHECK_TOTAL_SUM,
+            CASH_CHECK.CASH_SUM AS CASH_SUM,
+            CASH_CHECK.ECASH_SUM AS ECASH_SUM,
+            PRODUCT.ID AS PRODUCT_ID,
+            PRODUCT.NAME AS PRODUCT_NAME,
+            CASH_CHECK_LINE.PRICE AS PRICE,
+            CASH_CHECK_LINE.QUANTITY AS QUANTITY,
+            CASH_CHECK_LINE.TOTAL_SUM AS LINE_TOTAL_SUM
+            FROM CASH_CHECK
+            JOIN  CASH_CHECK_LINE on CASH_CHECK.ID = CASH_CHECK_LINE.CHECK_ID
+            JOIN PRODUCT on CASH_CHECK_LINE.PRODUCT_ID = PRODUCT.id
+        </createView>
+    </changeSet>
+</databaseChangeLog>
