@@ -9,12 +9,12 @@ spring:
     hibernate:
       ddl-auto: validate
   datasource:
-    url: jdbc:h2:file:./data/buyers
+    url: jdbc:h2:file:./data/data
     driverClassName: org.h2.Driver
-    username: buyers
-    password: buyers
+    username: vorotof
+    password: vorotof
   liquibase:
-    url: jdbc:h2:file:./data/buyers
+    url: jdbc:h2:file:./data/data
     change-log: classpath:db/changelog/changelog-master.xml
     enabled: true
 

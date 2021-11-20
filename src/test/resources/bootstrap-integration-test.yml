@@ -3,10 +3,10 @@ embedded:
     docker-image: postgres:12-alpine
     host: localhost
     port: 5432
-    schema: buyers
-    database: buyers
-    user: buyers
-    password: buyers
+    schema: vorotof
+    database: vorotof
+    user: vorotof
+    password: vorotof
 
 spring:
   datasource:

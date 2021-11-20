@@ -1,9 +1,11 @@
 package com.vorotof.advancereport.telegram.updateprocessor;
 
 import com.vorotof.advancereport.service.locale.LocaleService;
+import com.vorotof.advancereport.service.locale.Localizable;
 import com.vorotof.advancereport.service.telegram.request.TelegramMessage;
 import com.vorotof.advancereport.service.telegram.TelegramFileService;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import reactor.core.publisher.Mono;
@@ -11,12 +13,13 @@ import reactor.core.publisher.Mono;
 // TODO переделать в сервис
 @Slf4j
 @AllArgsConstructor
-public class FileProcessor implements MessageProcessor {
+public class FileProcessor implements Localizable, MessageProcessor {
 
     private final TelegramMessage message;
 
     private final TelegramFileService telegramFileService;
 
+    @Getter
     private final LocaleService localeService;
 
     @Override
@@ -40,8 +43,9 @@ public class FileProcessor implements MessageProcessor {
         return telegramFileService.processFile(message);
     }
 
-    private String getString(String key){
-        var languageCode = message.getLanguageCode();
-        return localeService.getString(key, languageCode);
+    @Override
+    public String getLanguageCode() {
+        return message.getLanguageCode();
     }
+
 }

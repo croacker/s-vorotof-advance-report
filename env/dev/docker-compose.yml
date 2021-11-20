@@ -11,17 +11,17 @@ services:
       - "5432:5432"
     environment:
       TZ: "Europe/Moscow"
-      POSTGRES_USER: buyers
-      POSTGRES_PASSWORD: buyers
-      POSTGRES_DB: buyers
-      PGDATA: /var/lib/postgresql/data/buyers
+      POSTGRES_USER: vorotof
+      POSTGRES_PASSWORD: vorotof
+      POSTGRES_DB: vorotof
+      PGDATA: /var/lib/postgresql/data/vorotof
     volumes:
-      - postgres-vorotof-advance-report:/var/lib/postgresql/data/buyers
+      - postgres-vorotof-advance-report:/var/lib/postgresql/data/vorotof
     command: ["-c", "shared_buffers=256MB", "-c", "max_connections=200"]
     networks:
       - vorotof-advance-report
     healthcheck:
-      test: PGPASSWORD=buyers psql -d buyers -U buyers -w -c '\q'
+      test: PGPASSWORD=vorotof psql -d vorotof -U vorotof -w -c '\q'
       interval: 20s
       timeout: 10s
 
@@ -32,8 +32,8 @@ services:
     ports:
       - "9090:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: buyers@vorotof-advance-report.ru
-      PGADMIN_DEFAULT_PASSWORD: buyers
+      PGADMIN_DEFAULT_EMAIL: vorotof@vorotof-advance-report.ru
+      PGADMIN_DEFAULT_PASSWORD: vorotof
     volumes:
       - pgadmindata:/var/lib/pgadmin
       - ./pgadmin/servers.json:/pgadmin4/servers.json

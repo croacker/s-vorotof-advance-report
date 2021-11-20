@@ -30,8 +30,8 @@ public class MessageDispatcherImpl implements MessageDispatcher {
         saveUser(telegramMessage);
         return switch (telegramMessage.getTelegramRequestType()) {
             case FILE -> createFileProcessor(telegramMessage);
-            case COMMAND -> createCommandProcessor(telegramMessage);
-            case CALLBACK -> createCallbackProcessor(telegramMessage);
+//            case COMMAND -> createCommandProcessor(telegramMessage);
+//            case CALLBACK -> createCallbackProcessor(telegramMessage);
             default -> createQueryProcessor(telegramMessage);
         };
     }

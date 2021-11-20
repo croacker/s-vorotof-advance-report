@@ -148,8 +148,8 @@ public class IrkBuyersClubBot extends TelegramLongPollingBot {
         var type = getMessageType(update);
         return switch (type) {
             case FILE -> new TelegramFile(type, update);
-            case COMMAND -> new TelegramCommand(type, update);
-            case CALLBACK -> new TelegramCallback(type, update);
+//            case COMMAND -> new TelegramCommand(type, update);
+//            case CALLBACK -> new TelegramCallback(type, update);
             default -> new TelegramQuery(type, update);
         };
     }

@@ -1,5 +1,6 @@
 package com.vorotof.advancereport.service;
 
+import com.vorotof.advancereport.domain.Shop;
 import com.vorotof.advancereport.repo.CashierRepo;
 import com.vorotof.advancereport.repo.ShopRepo;
 import com.vorotof.advancereport.service.dto.cashier.AddCashierDto;
@@ -50,8 +51,9 @@ public class CashierServiceImpl implements CashierService {
     }
 
     @Override
-    public CashierDto findByName(String name) {
-        return repo.findByName(name).map(toDtoMapper).orElse(null); // TODO return Optional
+    public CashierDto findByNameAndShopId(String name, Long shopId) {
+        Shop shop = shopRepo.findById(shopId).get();
+        return repo.findByNameAndShopId(name, shopId).map(toDtoMapper).orElse(null); // TODO return Optional
     }
 
     @Override

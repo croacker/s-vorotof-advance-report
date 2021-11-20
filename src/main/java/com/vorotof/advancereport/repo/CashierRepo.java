@@ -1,6 +1,7 @@
 package com.vorotof.advancereport.repo;
 
 import com.vorotof.advancereport.domain.Cashier;
+import com.vorotof.advancereport.domain.Shop;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,6 +15,6 @@ public interface CashierRepo extends CrudRepository<Cashier, Long> {
 
     List<Cashier> findByDeletedIsFalse(Pageable pageable);
 
-    Optional<Cashier> findByName(String name);
+    Optional<Cashier> findByNameAndShopId(String name, Long shopId);
 
 }
