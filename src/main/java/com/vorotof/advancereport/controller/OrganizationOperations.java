@@ -58,43 +58,4 @@ public interface OrganizationOperations {
     @GetMapping(path = "/{id}")
     Mono<OrganizationDto> getOrganization(@PathVariable Long id);
 
-    @Operation(operationId = "createOrganization", summary = "Добавить организацию",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "организация",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = OrganizationDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PostMapping
-    Mono<OrganizationDto> createOrganization(@RequestBody AddOrganizationDto dto);
-
-    @Operation(operationId = "updateOrganization", summary = "Обновить организацию",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "организация",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = OrganizationDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PutMapping
-    Mono<OrganizationDto> updateOrganization(@RequestBody OrganizationDto dto);
-
-    @Operation(operationId = "deleteOrganization", summary = "Удалить организацию по идентификатору")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "организация",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = OrganizationDto.class))}),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Организация не найдена", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
-    @DeleteMapping(path = "/{id}")
-    Mono<OrganizationDto> deleteOrganization(@PathVariable Long id);
 }

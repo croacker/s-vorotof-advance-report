@@ -43,19 +43,4 @@ public class CashierController implements CashierOperations {
         return Mono.just(service.findOne(id));
     }
 
-    @Override
-    public Mono<CashierDto> createCashier(@RequestBody AddCashierDto dto){
-        return Mono.just(service.save(dto));
-    }
-
-    @Override
-    public Mono<CashierDto> updateCashier(@RequestBody CashierDto dto){
-        return Mono.just(service.update(dto));
-    }
-
-    @Override
-    public Mono<CashierDto> deleteCashier(@PathVariable Long id){
-        return Mono.just(service.delete(id));
-    }
-
 }

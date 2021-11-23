@@ -35,18 +35,4 @@ public class OrganizationController implements OrganizationOperations {
         return Mono.just(service.findOne(id));
     }
 
-    @Override
-    public Mono<OrganizationDto> createOrganization(AddOrganizationDto dto) {
-        return Mono.just(service.save(dto));
-    }
-
-    @Override
-    public Mono<OrganizationDto> updateOrganization(OrganizationDto dto) {
-        return Mono.just(service.update(dto));
-    }
-
-    @Override
-    public Mono<OrganizationDto> deleteOrganization(Long id) {
-        return Mono.just(service.delete(id));
-    }
 }

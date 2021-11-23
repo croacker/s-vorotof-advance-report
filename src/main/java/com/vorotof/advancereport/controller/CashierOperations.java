@@ -57,44 +57,4 @@ public interface CashierOperations {
     @GetMapping(path = "/{id}")
     Mono<CashierDto> getCashier(@PathVariable Long id);
 
-    @Operation(operationId = "createCashier", summary = "Добавить кассира",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Кассир",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = CashierDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PostMapping
-    Mono<CashierDto> createCashier(@RequestBody AddCashierDto dto);
-
-    @Operation(operationId = "updateCashier", summary = "Обновить кассира",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Кассир",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = CashierDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PutMapping
-    Mono<CashierDto> updateCashier(@RequestBody CashierDto dto);
-
-    @Operation(operationId = "deleteCashier", summary = "Удалить кассира по идентификатору")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Кассир",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = CashierDto.class))}),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Кассир не найден", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
-    @DeleteMapping(path = "/{id}")
-    Mono<CashierDto> deleteCashier(@PathVariable Long id);
-
 }

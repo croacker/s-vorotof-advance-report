@@ -59,44 +59,4 @@ public interface CheckOperations {
     @GetMapping(path = "/{id}")
     Mono<CashCheckInfoDto> getCheck(@PathVariable Long id);
 
-    @Operation(operationId = "createCheck", summary = "Добавить чек",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Чек",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = CashCheckDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PostMapping
-    Mono<CashCheckDto> createCheck(@RequestBody AddCashCheckDto dto);
-
-    @Operation(operationId = "updateCheck", summary = "Обновить чек",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Чек",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = CashCheckDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PutMapping
-    Mono<CashCheckDto> updateCheck(@RequestBody CashCheckDto dto);
-
-    @Operation(operationId = "deleteCheck", summary = "Удалить чек по идентификатору")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Чек",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = CashCheckDto.class))}),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Чек не найдена", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
-    @DeleteMapping(path = "/{id}")
-    Mono<CashCheckDto> deleteCheck(@PathVariable Long id);
-
 }

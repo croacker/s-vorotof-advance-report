@@ -65,44 +65,4 @@ public interface ProductPriceOperations {
     @GetMapping(path = "/{id}")
     Mono<ProductPriceInfoDto> getProductPrice(@PathVariable Long id);
 
-    @Operation(operationId = "createProductPrice", summary = "Добавить цену товара",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Цена товара",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ProductPriceDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PostMapping
-    Mono<ProductPriceDto> createProductPrice(@RequestBody AddProductPriceDto dto);
-
-    @Operation(operationId = "updateProductPrice", summary = "Обновить цену товара",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Цена товара",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ProductPriceDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PutMapping
-    Mono<ProductPriceDto> updateProductPrice(@RequestBody ProductPriceDto dto);
-
-    @Operation(operationId = "deleteProductPrice", summary = "Удалить цену товара по идентификатору")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Цена товара",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ProductPriceDto.class))}),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Товар не найден", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
-    @DeleteMapping(path = "/{id}")
-    Mono<ProductPriceDto> deleteProductPrice(@PathVariable Long id);
-
 }

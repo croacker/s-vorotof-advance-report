@@ -35,19 +35,4 @@ public class CheckController implements CheckOperations{
         return Mono.just(service.findById(id));
     }
 
-    @Override
-    public Mono<CashCheckDto> createCheck(AddCashCheckDto dto) {
-        return Mono.just(service.save(dto));
-    }
-
-    @Override
-    public Mono<CashCheckDto> updateCheck(@RequestBody CashCheckDto dto){
-        return Mono.just(service.update(dto));
-    }
-
-    @Override
-    public Mono<CashCheckDto> deleteCheck(@PathVariable Long id){
-        return Mono.just(service.delete(id));
-    }
-
 }
