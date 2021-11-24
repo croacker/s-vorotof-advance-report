@@ -38,19 +38,4 @@ public class ProductPriceController implements ProductPriceOperations {
         return Mono.just(service.findOne(id));
     }
 
-    @Override
-    public Mono<ProductPriceDto> createProductPrice(@RequestBody AddProductPriceDto dto){
-        return Mono.just(service.save(dto));
-    }
-
-    @Override
-    public Mono<ProductPriceDto> updateProductPrice(@RequestBody ProductPriceDto dto){
-        return Mono.just(service.update(dto));
-    }
-
-    @Override
-    public Mono<ProductPriceDto> deleteProductPrice(@PathVariable Long id){
-        return Mono.just(service.delete(id));
-    }
-
 }

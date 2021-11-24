@@ -2,13 +2,13 @@ version: "3.7"
 services:
 
   # БД
-  db:
+  db-vorotof:
     image: postgres:12-alpine
-    container_name: db
-    hostname: db
+    container_name: db-vorotof
+    hostname: db-vorotof
     restart: always
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       TZ: "Europe/Moscow"
       POSTGRES_USER: vorotof
@@ -38,7 +38,27 @@ services:
       - pgadmindata:/var/lib/pgadmin
       - ./pgadmin/servers.json:/pgadmin4/servers.json
     depends_on:
-      - db
+      - db-vorotof
+    networks:
+      - vorotof-advance-report
+
+  app-vorotof:
+    container_name: app-vorotof
+    hostname: app-vorotof
+    image: croacker/s-vorotof-advance-report:${VOROTOF_ADVANCE_REPORT_VERSION}
+    restart: always
+    ports:
+      - 17501:8080
+    environment:
+      DB_HOST: db-vorotof
+      DB_PORT: 5433
+      DB_NAME: vorotof
+      DB_USERNAME: vorotof
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_BOT_USERNAME: ${TELEGRAM_BOT_USERNAME}
+    depends_on:
+      - db-vorotof
     networks:
       - vorotof-advance-report
 

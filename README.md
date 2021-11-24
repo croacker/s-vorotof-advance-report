@@ -8,7 +8,7 @@ git clone https://github.com/croacker/s-vorotof-advance-report
 ```
 
 ## Предварительные условия
-* JDK 1.17
+* JDK 1.14
 
 ## Сборка
 ```

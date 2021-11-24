@@ -3,11 +3,11 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST:127.0.0.1}:5432/${DB_NAME:vorotof}
+    url: jdbc:postgresql://${DB_HOST:127.0.0.1}:${DB_PORT:5432}/${DB_NAME:vorotof}
     username: ${DB_USERNAME:vorotof}
     password: ${DB_PASSWORD:vorotof}
   liquibase:
-    url: jdbc:postgresql://${DB_HOST:127.0.0.1}:5432/${DB_NAME:vorotof}
+    url: jdbc:postgresql://${DB_HOST:127.0.0.1}:${DB_PORT:5432}/${DB_NAME:vorotof}
     user: ${DB_USERNAME:vorotof}
     password: ${DB_PASSWORD:vorotof}
     change-log: classpath:db/changelog/changelog-master.xml

@@ -6,7 +6,7 @@
       "Group": "Servers",
       "SSLMode": "prefer",
       "Username": "vorotof",
-      "Host": "db",
+      "Host": "db-vorotof",
       "MaintenanceDB": "vorotof"
     }
   }

@@ -66,44 +66,4 @@ public interface ShopOperations {
     @GetMapping(path = "/{id}")
     Mono<ShopDto> getShop(@PathVariable Long id);
 
-    @Operation(operationId = "createShop", summary = "Добавить Магазин",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Магазин",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ShopDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PostMapping
-    Mono<ShopDto> createShop(@RequestBody AddShopDto dto);
-
-    @Operation(operationId = "updateShop", summary = "Обновить Магазин",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Магазин",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ShopDto.class))
-                    }),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)
-    })
-    @PutMapping
-    Mono<ShopDto> updateShop(@RequestBody ShopDto dto);
-
-    @Operation(operationId = "deleteShop", summary = "Удалить Магазин по идентификатору")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Магазин",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = ShopDto.class))}),
-            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
-            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Магазин не найден", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
-    @DeleteMapping(path = "/{id}")
-    Mono<ShopDto> deleteShop(@PathVariable Long id);
-
 }

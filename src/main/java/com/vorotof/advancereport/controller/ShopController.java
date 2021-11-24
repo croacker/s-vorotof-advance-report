@@ -37,19 +37,4 @@ public class ShopController implements ShopOperations {
         return Mono.just(service.findOne(id));
     }
 
-    @Override
-    public Mono<ShopDto> createShop(@RequestBody AddShopDto dto){
-        return Mono.just(service.save(dto));
-    }
-
-    @Override
-    public Mono<ShopDto> updateShop(@RequestBody ShopDto dto){
-        return Mono.just(service.update(dto));
-    }
-
-    @Override
-    public Mono<ShopDto> deleteShop(@PathVariable Long id){
-        return Mono.just(service.delete(id));
-    }
-
 }
