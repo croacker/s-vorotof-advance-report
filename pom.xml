@@ -10,12 +10,14 @@
     </parent>
     <groupId>com.vorotof</groupId>
     <artifactId>advance-report</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>vorotof-advance-report</name>
     <description>Vorotof advance report</description>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>14</java.version>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
         <docker.image.name>croacker/s-vorotof-advance-report:${project.version}</docker.image.name>
         <spring-cloud-starter.version>3.0.0</spring-cloud-starter.version>
         <springdoc-openapi-webflux-ui.version>1.5.12</springdoc-openapi-webflux-ui.version>

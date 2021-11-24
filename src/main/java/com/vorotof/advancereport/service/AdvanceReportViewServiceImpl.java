@@ -28,10 +28,16 @@ public class AdvanceReportViewServiceImpl implements AdvanceReportViewService {
 
     @Override
     public List<AdvanceReportViewDto> advanceReport(LocalDate beginDate, LocalDate endDate) {
+        log.info("Request Advance report from {} to {}", beginDate, endDate);
         LocalDateTime begin = beginDate.atStartOfDay();
         LocalDateTime end = endDate.atTime(LocalTime.MAX);
         return repo.findAllByCheckDateBetweenOrderByCheckDate(begin, end).stream()
-                .map(mapper).collect(Collectors.toList());
+                .map(mapper)
+                .map(dto -> {
+                    log.info("Check line: {}", dto);
+                    return dto;
+                })
+                .collect(Collectors.toList());
     }
 
 }

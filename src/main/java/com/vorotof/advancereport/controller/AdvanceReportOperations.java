@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;
@@ -27,7 +28,9 @@ public interface AdvanceReportOperations {
             @ApiResponse(responseCode = "404", description = "Данные за период не найдены", content = @Content),
             @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
     @GetMapping
-    Flux<AdvanceReportViewDto> getAdvanceReport(@RequestParam(value = "beginDate", defaultValue = "#{T(java.time.LocalDate).now()}") LocalDate beginDate,
-                                                @RequestParam(value = "endDate", defaultValue = "#{T(java.time.LocalDate).now()}") LocalDate endDate);
+    Flux<AdvanceReportViewDto> getAdvanceReport(@RequestParam(value = "beginDate")
+                                                @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate beginDate,
+                                                @RequestParam(value = "endDate")
+                                                @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate endDate);
 
 }
