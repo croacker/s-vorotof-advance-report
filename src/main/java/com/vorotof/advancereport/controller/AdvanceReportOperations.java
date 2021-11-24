@@ -1,7 +1,6 @@
 package com.vorotof.advancereport.controller;
 
-import com.vorotof.advancereport.service.dto.advancereport.AdvanceReportDto;
-import com.vorotof.advancereport.service.dto.telegramuser.TelegramUserDto;
+import com.vorotof.advancereport.service.dto.advancereport.AdvanceReportViewDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -28,7 +27,7 @@ public interface AdvanceReportOperations {
             @ApiResponse(responseCode = "404", description = "Данные за период не найдены", content = @Content),
             @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
     @GetMapping
-    Flux<AdvanceReportDto> getAdvanceReport(@RequestParam(value = "beginDate", defaultValue = "#{T(java.time.LocalDate).now()}") LocalDate beginDate,
-                                            @RequestParam(value = "endDate", defaultValue = "#{T(java.time.LocalDate).now()}") LocalDate endDate);
+    Flux<AdvanceReportViewDto> getAdvanceReport(@RequestParam(value = "beginDate", defaultValue = "#{T(java.time.LocalDate).now()}") LocalDate beginDate,
+                                                @RequestParam(value = "endDate", defaultValue = "#{T(java.time.LocalDate).now()}") LocalDate endDate);
 
 }
