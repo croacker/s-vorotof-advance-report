@@ -2,9 +2,10 @@ package com.vorotof.advancereport.service.mapper.scanneddocument;
 
 import com.vorotof.advancereport.domain.ScannedDocument;
 import com.vorotof.advancereport.service.dto.scanneddocument.AddScannedDocumentDto;
-import com.vorotof.advancereport.service.dto.scanneddocument.ScannedDocumentDto;
 import com.vorotof.advancereport.service.mapper.Mapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AddDtoToScannedDocument implements Mapper<AddScannedDocumentDto, ScannedDocument> {
 
     @Override

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="15" author="croacker">
+        <createTable tableName="scanned_document">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="date" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="number" type="varchar(32)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="date_doc" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="number_doc" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type_doc" type="varchar(128)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description_doc" type="varchar(256)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="contractor" type="varchar(256)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="organization" type="varchar(256)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="seller_number" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="buyer_number" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="nomenclature_table" type="jsonb">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="bool" defaultValue="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

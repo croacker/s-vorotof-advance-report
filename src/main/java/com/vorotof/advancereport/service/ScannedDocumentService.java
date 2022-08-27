@@ -16,7 +16,7 @@ public interface ScannedDocumentService {
 
     Mono<ScannedDocumentDto> findOne(Long id);
 
-    Mono<ScannedDocumentDto> findByDescriptionDoc(String name);
+    Mono<ScannedDocumentDto> findByDescriptionDoc(String descriptionDoc);
 
     Mono<ScannedDocumentDto> save(AddScannedDocumentDto dto);
 
