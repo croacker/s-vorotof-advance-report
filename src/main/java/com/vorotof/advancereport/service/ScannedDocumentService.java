@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ScannedDocumentService {
@@ -17,6 +18,8 @@ public interface ScannedDocumentService {
     Mono<ScannedDocumentDto> findOne(Long id);
 
     Mono<ScannedDocumentDto> findByDescriptionDoc(String descriptionDoc);
+
+    Flux<ScannedDocumentDto> getBetweenDate(LocalDate beginDate, LocalDate endDate);
 
     Mono<ScannedDocumentDto> save(AddScannedDocumentDto dto);
 

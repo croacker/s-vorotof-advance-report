@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDate;
+
 /**
  * РаспознанныйДокумент из 1С
  */
@@ -41,6 +43,11 @@ public class ScannedDocumentController implements ScannedDocumentOperations {
     @Override
     public Mono<ScannedDocumentDto> getScannedDocumentByDescriptionDoc(String descriptionDoc) {
         return service.findByDescriptionDoc(descriptionDoc);
+    }
+
+    @Override
+    public Flux<ScannedDocumentDto> getBetweenDate(LocalDate beginDate, LocalDate endDate) {
+        return service.getBetweenDate(beginDate, endDate);
     }
 
     @Override

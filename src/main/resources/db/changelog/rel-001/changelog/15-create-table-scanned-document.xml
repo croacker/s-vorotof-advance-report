@@ -9,13 +9,13 @@
             <column name="id" type="bigserial" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
-            <column name="date" type="varchar(64)">
+            <column name="date" type="timestamp">
                 <constraints nullable="true"/>
             </column>
             <column name="number" type="varchar(32)">
                 <constraints nullable="true"/>
             </column>
-            <column name="date_doc" type="varchar(64)">
+            <column name="date_doc" type="timestamp">
                 <constraints nullable="true"/>
             </column>
             <column name="number_doc" type="varchar(64)">
@@ -39,17 +39,8 @@
             <column name="buyer_number" type="varchar(64)">
                 <constraints nullable="true"/>
             </column>
-            <column name="nomenclature_table" type="jsonb">
+            <column name="nomenclature_table" type="varchar">
                 <constraints nullable="true"/>
-            </column>
-            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
-            </column>
-            <column name="updated_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
-            </column>
-            <column name="deleted" type="bool" defaultValue="false">
-                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>

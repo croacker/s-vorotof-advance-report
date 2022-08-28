@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Optional;
 
 @Service
@@ -31,7 +34,7 @@ public class ScannedDocumentServiceImpl implements ScannedDocumentService {
 
     @Override
     public Flux<ScannedDocumentDto> findAll(Pageable pageable) {
-        return Flux.fromIterable(repo.findByDeletedIsFalse(pageable)).map(toDtoMapper);
+        return Flux.fromIterable(repo.findByIdIsNotNull(pageable)).map(toDtoMapper);
     }
 
     @Override
@@ -55,6 +58,15 @@ public class ScannedDocumentServiceImpl implements ScannedDocumentService {
     }
 
     @Override
+    public Flux<ScannedDocumentDto> getBetweenDate(LocalDate beginDate, LocalDate endDate) {
+        log.info("Request ScannedDocument from {} to {}", beginDate, endDate);
+        LocalDateTime begin = beginDate.atStartOfDay();
+        LocalDateTime end = endDate.atTime(LocalTime.MAX);
+        return Flux.fromIterable(repo.findAllByDateBetweenOrderByDate(begin, end))
+                .map(toDtoMapper);
+    }
+
+    @Override
     public Mono<ScannedDocumentDto> save(AddScannedDocumentDto dto) {
         ScannedDocument document = addToEntityMapper.map(dto);
         return Mono.just(toDtoMapper.map(repo.save(document)));
@@ -68,12 +80,12 @@ public class ScannedDocumentServiceImpl implements ScannedDocumentService {
 
     @Override
     public Mono<ScannedDocumentDto> delete(Long id) {
-        return repo.findById(id).map(scannedDocument -> {
-                    scannedDocument.setDeleted(true);
-                    scannedDocument = repo.save(scannedDocument);
-                    return toDtoMapper.map(scannedDocument);
-                })
-                .map(Mono::just)
-                .orElse(Mono.empty());
+//        return repo.findById(id).map(scannedDocument -> {
+//                    scannedDocument = repo.save(scannedDocument);
+//                    return toDtoMapper.map(scannedDocument);
+//                })
+//                .map(Mono::just)
+//                .orElse(Mono.empty());
+        throw new UnsupportedOperationException();
     }
 }

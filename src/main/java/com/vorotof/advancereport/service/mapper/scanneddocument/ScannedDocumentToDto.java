@@ -22,10 +22,7 @@ public class ScannedDocumentToDto implements Mapper<ScannedDocument, ScannedDocu
                 .setOrganization(input.getOrganization())
                 .setSellerNumber(input.getSellerNumber())
                 .setBuyerNumber(input.getBuyerNumber())
-                .setNomenclatureTable(input.getNomenclatureTable())
-                .setCreatedAt(input.getCreatedAt())
-                .setUpdatedAt(input.getUpdatedAt())
-                .setDeleted(input.getDeleted());
+                .setNomenclatureTable(input.getNomenclatureTable());
     }
 
 }

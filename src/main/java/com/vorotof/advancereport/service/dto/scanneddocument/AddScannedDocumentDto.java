@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDateTime;
+
 /**
  * РаспознанныйДокумент из 1С
  */
@@ -20,7 +22,7 @@ public class AddScannedDocumentDto {
      * Дата документа 1С.
      */
     @Schema(description = "Дата документа 1С", example = "12.07.2022 6:54:21")
-    private String date;
+    private LocalDateTime date;
 
     /**
      * Номер документа 1С.
@@ -32,7 +34,7 @@ public class AddScannedDocumentDto {
      * Дата распознанного документа.
      */
     @Schema(description = "Дата распознанного документа", example = "12.07.2022")
-    private String dateDoc;
+    private LocalDateTime dateDoc;
 
     /**
      * Номер распознанного документа.

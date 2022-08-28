@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 /**
@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Accessors(chain = true)
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 public class ScannedDocument {
 
     @Id
@@ -29,7 +28,7 @@ public class ScannedDocument {
     /**
      * Дата документа 1С
      */
-    private String date;
+    private LocalDateTime date;
 
     /**
      * Номер документа 1С
@@ -39,7 +38,7 @@ public class ScannedDocument {
     /**
      * Дата распознанного документа
      */
-    private String dateDoc;
+    private LocalDateTime dateDoc;
 
     /**
      * Номер распознанного документа
@@ -81,21 +80,4 @@ public class ScannedDocument {
      */
     private String nomenclatureTable;
 
-    /**
-     * Создан.
-     */
-    @Column(updatable = false)
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    /**
-     * Обновлен.
-     */
-    @LastModifiedDate
-    private LocalDateTime updatedAt;
-
-    /**
-     * Пометка на удаление.
-     */
-    private Boolean deleted;
 }

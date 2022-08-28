@@ -28,7 +28,7 @@ public class ScannedDocumentDto {
      * Дата документа 1С.
      */
     @Schema(description = "Дата документа 1С", example = "12.07.2022 6:54:21")
-    private String date;
+    private LocalDateTime date;
 
     /**
      * Номер документа 1С.
@@ -40,7 +40,7 @@ public class ScannedDocumentDto {
      * Дата распознанного документа.
      */
     @Schema(description = "Дата распознанного документа", example = "12.07.2022")
-    private String dateDoc;
+    private LocalDateTime dateDoc;
 
     /**
      * Номер распознанного документа.
@@ -91,21 +91,4 @@ public class ScannedDocumentDto {
     @Schema(description = "Таблица номенклатуры в виде json", example = "{}")
     private String nomenclatureTable;
 
-    /**
-     * Создан.
-     */
-    @Schema(description = "Создан")
-    private LocalDateTime createdAt;
-
-    /**
-     * Обновлен.
-     */
-    @Schema(description = "Обновлен")
-    private LocalDateTime updatedAt;
-
-    /**
-     * Пометка на удаление.
-     */
-    @Schema(description = "Пометка на удаление", example = "false")
-    private Boolean deleted;
 }
