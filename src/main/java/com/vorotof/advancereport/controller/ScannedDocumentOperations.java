@@ -77,9 +77,9 @@ public interface ScannedDocumentOperations {
     @GetMapping(path = "/description-doc/{descriptionDoc}")
     Mono<ScannedDocumentDto> getScannedDocumentByDescriptionDoc(@PathVariable String descriptionDoc);
 
-    @Operation(operationId = "getAdvanceReport", summary = "Получить РаспознанныйДокумент из 1С за период")
+    @Operation(operationId = "getBetweenDate", summary = "Получить РаспознанныеДокументы из 1С за период")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "РаспознанныйДокумент из 1С за период",
+            @ApiResponse(responseCode = "200", description = "РаспознанныеДокументы из 1С за период",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = List.class))}),
             @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
@@ -88,6 +88,21 @@ public interface ScannedDocumentOperations {
             @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
     @GetMapping(path = "/between")
     Flux<ScannedDocumentDto> getBetweenDate(@RequestParam(value = "beginDate")
+                                                @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate beginDate,
+                                                @RequestParam(value = "endDate")
+                                                @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate endDate);
+
+    @Operation(operationId = "getIdsBetweenDate", summary = "Получить идентификаторы РаспознанныхДокументов из 1С за период")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Идентификаторы РаспознанныхДокументов из 1С за период",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = List.class))}),
+            @ApiResponse(responseCode = "400", description = "Ошибка в запросе", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Ошибка авторизации", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Данные за период не найдены", content = @Content),
+            @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
+    @GetMapping(path = "/between/id")
+    Flux<Long> getIdsBetweenDate(@RequestParam(value = "beginDate")
                                                 @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate beginDate,
                                                 @RequestParam(value = "endDate")
                                                 @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate endDate);

@@ -67,6 +67,14 @@ public class ScannedDocumentServiceImpl implements ScannedDocumentService {
     }
 
     @Override
+    public Flux<Long> getIdsBetweenDate(LocalDate beginDate, LocalDate endDate) {
+        log.info("Request ScannedDocument from {} to {}", beginDate, endDate);
+        LocalDateTime begin = beginDate.atStartOfDay();
+        LocalDateTime end = endDate.atTime(LocalTime.MAX);
+        return Flux.fromIterable(repo.findAllIdByDateBetweenOrderByDate(begin, end));
+    }
+
+    @Override
     public Mono<ScannedDocumentDto> save(AddScannedDocumentDto dto) {
         ScannedDocument document = addToEntityMapper.map(dto);
         return Mono.just(toDtoMapper.map(repo.save(document)));

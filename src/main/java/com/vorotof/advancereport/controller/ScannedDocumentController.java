@@ -51,6 +51,11 @@ public class ScannedDocumentController implements ScannedDocumentOperations {
     }
 
     @Override
+    public Flux<Long> getIdsBetweenDate(LocalDate beginDate, LocalDate endDate) {
+        return service.getIdsBetweenDate(beginDate, endDate);
+    }
+
+    @Override
     public Mono<ScannedDocumentDto> createScannedDocument(AddScannedDocumentDto dto) {
         return service.save(dto);
     }

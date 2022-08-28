@@ -21,6 +21,8 @@ public interface ScannedDocumentService {
 
     Flux<ScannedDocumentDto> getBetweenDate(LocalDate beginDate, LocalDate endDate);
 
+    Flux<Long> getIdsBetweenDate(LocalDate beginDate, LocalDate endDate);
+
     Mono<ScannedDocumentDto> save(AddScannedDocumentDto dto);
 
     Mono<ScannedDocumentDto> update(ScannedDocumentDto dto);
