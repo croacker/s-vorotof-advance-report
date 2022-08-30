@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.vorotof</groupId>
     <artifactId>advance-report</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>vorotof-advance-report</name>
     <description>Vorotof advance report</description>
 
