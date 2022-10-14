@@ -88,12 +88,11 @@ public class ScannedDocumentServiceImpl implements ScannedDocumentService {
 
     @Override
     public Mono<ScannedDocumentDto> delete(Long id) {
-//        return repo.findById(id).map(scannedDocument -> {
-//                    scannedDocument = repo.save(scannedDocument);
-//                    return toDtoMapper.map(scannedDocument);
-//                })
-//                .map(Mono::just)
-//                .orElse(Mono.empty());
-        throw new UnsupportedOperationException();
+        return repo.findById(id).map(scannedDocument -> {
+                    repo.delete(scannedDocument);
+                    return toDtoMapper.map(scannedDocument);
+                })
+                .map(Mono::just)
+                .orElse(Mono.empty());
     }
 }
