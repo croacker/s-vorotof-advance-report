@@ -66,7 +66,7 @@ public class ScannedDocumentController implements ScannedDocumentOperations {
     }
 
     @Override
-    public Mono<ScannedDocumentDto> deleteOrganization(Long id) {
+    public Mono<ScannedDocumentDto> deleteScannedDocument(Long id) {
         return service.delete(id);
     }
 }
