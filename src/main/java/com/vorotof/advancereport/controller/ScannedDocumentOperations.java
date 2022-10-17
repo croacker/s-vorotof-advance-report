@@ -145,5 +145,5 @@ public interface ScannedDocumentOperations {
             @ApiResponse(responseCode = "404", description = "Организация не найдена", content = @Content),
             @ApiResponse(responseCode = "500", description = "Внутренняя ошибка", content = @Content)})
     @DeleteMapping(path = "/{id}")
-    Mono<ScannedDocumentDto> deleteOrganization(@PathVariable Long id);
+    Mono<ScannedDocumentDto> deleteScannedDocument(@PathVariable Long id);
 }
